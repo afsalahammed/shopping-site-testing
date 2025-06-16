@@ -11,18 +11,24 @@ public class BaseTest {
     protected WebDriver driver;
     protected String baseUrl = "https://demoblaze.com";
 
-    @BeforeMethod
-    public void setup() {
-        driver = new FirefoxDriver();
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"browser"})
+    public void setup(@Optional("firefox") String browser) {
+        if (browser.equalsIgnoreCase("chrome")) {
+            driver = new ChromeDriver();
+        } else {
+            driver = new FirefoxDriver();
+        }
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://demoblaze.com");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
-            driver.quit();
+            driver.quit();  // This should close the browser window
         }
     }
 }

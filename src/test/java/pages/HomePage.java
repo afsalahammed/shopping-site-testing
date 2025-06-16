@@ -62,6 +62,18 @@ public class HomePage {
                 break;
         }
     }
+    
+    public void clickFirstProduct() {
+        driver.findElement(By.cssSelector(".card-title a")).click();
+    }
+    
+    public void addFirstProductToCart() {
+        driver.findElement(By.cssSelector(".card-title a")).click();
+        driver.findElement(By.linkText("Add to cart")).click();
+        driver.switchTo().alert().accept();
+        driver.navigate().back(); // Go back to Home
+    }
+
 
     public boolean isFooterVisible() {
         return driver.findElement(footer).isDisplayed();
