@@ -16,8 +16,8 @@ public class HomePageTests extends BaseTest {
     @Test
     public void testClickLogoRedirectsToHome() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickNext(); // Navigate to another set of products
-        homePage.clickLogo(); // Click logo to go back
+        homePage.clickNext(); 
+        homePage.clickLogo(); 
         Assert.assertTrue(driver.getCurrentUrl().contains("demoblaze.com"), "Should be on home page");
     }
 

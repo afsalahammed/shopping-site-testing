@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
+
 import java.time.Duration;
 
 public class BaseTest {
@@ -28,7 +29,7 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
-            driver.quit();  // This should close the browser window
+            driver.quit();
         }
     }
 }

@@ -19,6 +19,10 @@ public class CartPage {
     private By deleteButtons = By.linkText("Delete");
     private By totalPrice = By.id("totalp");
     private By placeOrderBtn = By.xpath("//button[text()='Place Order']");
+    private By cartLink = By.id("cartur");
+    private By productRow = By.xpath("//tr[@class='success']");
+    private By deleteButton = By.xpath("//tr[@class='success']//a[text()='Delete']");
+
 
     public List<WebElement> getProductRows() {
         return driver.findElements(productRows);
@@ -54,5 +58,29 @@ public class CartPage {
 
     public boolean isProductPresentInCart() {
         return driver.findElements(productRows).size() > 0;
+    }
+    
+    public void goToCart() {
+        driver.findElement(cartLink).click();
+    }
+
+    public int getProductCount() {
+        return driver.findElements(productRow).size();
+    }
+
+    public String getFirstProductTitle() {
+        return driver.findElement(By.xpath("//tr[@class='success']//td[2]")).getText();
+    }
+
+    public String getFirstProductPrice() {
+        return driver.findElement(By.xpath("//tr[@class='success']//td[3]")).getText();
+    }
+
+    public void deleteFirstProduct() {
+        driver.findElement(deleteButton).click();
+    }
+
+    public boolean isDeleteButtonVisible() {
+        return driver.findElement(deleteButton).isDisplayed();
     }
 }
